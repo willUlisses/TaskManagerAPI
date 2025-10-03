@@ -1,6 +1,11 @@
 package com.TaskManager.models;
 
+import com.TaskManager.models.enumerations.UserRoles;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +15,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "Users")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class User implements UserDetails {
 
     @Id
@@ -40,7 +49,12 @@ public class User implements UserDetails {
     )
     private UserRoles role;
 
-
+    public User(String login, String password, String email, UserRoles role) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
 
 
     @Override

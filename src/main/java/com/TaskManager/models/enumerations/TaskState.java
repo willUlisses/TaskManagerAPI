@@ -1,4 +1,4 @@
-package com.TaskManager.models;
+package com.TaskManager.models.enumerations;
 
 public enum TaskState {
     INCOMPLETE("Incompleted"),
