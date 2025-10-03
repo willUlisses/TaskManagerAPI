@@ -29,7 +29,7 @@ public class User implements UserDetails {
             unique = true,
             nullable = false
     )
-    private String login;
+    private String username;
 
     @Column(
             nullable = false
@@ -49,8 +49,8 @@ public class User implements UserDetails {
     )
     private UserRoles role;
 
-    public User(String login, String password, String email, UserRoles role) {
-        this.login = login;
+    public User(String username, String password, String email, UserRoles role) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
@@ -73,6 +73,6 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.login;
+        return this.username;
     }
 }
