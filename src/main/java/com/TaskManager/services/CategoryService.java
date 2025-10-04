@@ -2,7 +2,6 @@ package com.TaskManager.services;
 
 import com.TaskManager.dtos.CategoryDTO;
 import com.TaskManager.models.Category;
-import com.TaskManager.models.Task;
 import com.TaskManager.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 

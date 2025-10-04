@@ -21,14 +21,18 @@ public class AuditLog {
     private Long id;
 
     private String entityName;
-    private Long entityId;
-
-    @Enumerated(EnumType.STRING)
-    private LogActions action;
-
+    private String action;
     private String username;
-    private final LocalDateTime timeStamp = LocalDateTime.now();
+    private LocalDateTime timeStamp;
     private String details;
+
+    public AuditLog(String entityName, String action, String username, String details){
+        this.entityName = entityName;
+        this.action = action;
+        this.username = username;
+        this.details = details;
+    }
+
 }
 
 

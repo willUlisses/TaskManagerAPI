@@ -45,6 +45,10 @@ public class TaskService {
         return repository.save(newTask);
     }
 
+    // add editTask method
+
+    //add updateTaskState method
+
     public void deleteTaskById(Long id) {
         repository.deleteById(id);
     }
