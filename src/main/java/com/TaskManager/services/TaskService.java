@@ -2,8 +2,8 @@ package com.TaskManager.services;
 
 import com.TaskManager.dtos.TaskDTO;
 import com.TaskManager.models.Task;
-import com.TaskManager.models.enumerations.TaskState;
 import com.TaskManager.repositories.TaskRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +12,11 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository repository;
+    private final AuditLogService logService;
 
-    public TaskService(TaskRepository repository) {
+    public TaskService(TaskRepository repository, AuditLogService logService) {
         this.repository = repository;
+        this.logService = logService;
     }
 
     public List<Task> findAll() {
@@ -25,7 +27,7 @@ public class TaskService {
     }
 
     public Task findByTitle(String title) {
-        return repository.findByTitle(title).orElse(null); // throw TaskNotFoundException later
+        return repository.findByTitleIgnoreCase(title).orElse(null); // throw TaskNotFoundException later
     }
 
     public Task findTaskById(Long id) {
@@ -42,14 +44,24 @@ public class TaskService {
 
     public Task createTask(TaskDTO data) {
         Task newTask = new Task(data.title(), data.description());
+
+        logService.log("Task",
+                "CREATE_TASK",
+                "Created a task with title: " + data.title()
+        );
+
         return repository.save(newTask);
     }
 
-    // add editTask method
+    // add  editTask method
 
     //add updateTaskState method
 
     public void deleteTaskById(Long id) {
+        logService.log("Task",
+                "DELETE_TASK",
+                "Deleted the task with resource id: " + id
+        );
         repository.deleteById(id);
     }
 

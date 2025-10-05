@@ -2,6 +2,7 @@ package com.TaskManager.services;
 
 import com.TaskManager.models.AuditLog;
 import com.TaskManager.repositories.AuditLogRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,7 +21,8 @@ public class AuditLogService {
         return repository.findAll();
     }
 
-    public void log(String entityName, String action, String username, String details){
+    public void log(String entityName, String action, String details){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         AuditLog log = new AuditLog();
         log.setAction(action);
         log.setUsername(username);
