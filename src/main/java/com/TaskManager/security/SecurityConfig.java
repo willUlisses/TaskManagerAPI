@@ -11,4 +11,5 @@ public class SecurityConfig {
     // importar meu securityFilter pro addFilterBefore
     // adicionar meu securityFilterChain e meu filter before
     // Criar um bean de um encoder bcrypt
+
 }
