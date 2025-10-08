@@ -24,6 +24,7 @@ public class SecurityConfig {
     }
     // adicionar meu securityFilterChain e meu filter before
 
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -47,7 +48,7 @@ public class SecurityConfig {
                 .build();
     }
 
-
+    @Bean
     public AuthenticationManager authManager(AuthenticationConfiguration authConfiguration)
             throws Exception {
         return authConfiguration.getAuthenticationManager();
