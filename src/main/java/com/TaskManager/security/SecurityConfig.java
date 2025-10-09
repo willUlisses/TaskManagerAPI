@@ -22,7 +22,6 @@ public class SecurityConfig {
     public SecurityConfig(SecurityFilter tokenFilter) {
         this.tokenFilter = tokenFilter;
     }
-    // adicionar meu securityFilterChain e meu filter before
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

@@ -1,4 +1,4 @@
 package com.TaskManager.dtos;
 
-public record LoginResponseDTO() {
+public record LoginResponseDTO(String token) {
 }
