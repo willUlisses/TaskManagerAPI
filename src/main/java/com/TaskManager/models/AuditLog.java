@@ -1,6 +1,5 @@
 package com.TaskManager.models;
 
-import com.TaskManager.models.enumerations.LogActions;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
